@@ -23,7 +23,6 @@ def whois():
 	my_file = open("file1", "r")
 
 	data = my_file.readlines()
-	print(data)
 	#data_into_list = data.split(" ")
  
 	complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+request.form['name1']
@@ -33,7 +32,7 @@ def whois():
 	
 
 	
-	return render_template("next.html",name3=api_data,name4=file1)
+	return render_template("next.html",name3=api_data,name4=data)
 
 
 
