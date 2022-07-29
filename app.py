@@ -24,7 +24,6 @@ def home():
 
 @app.route('/domain', methods =['POST', 'GET'])
 def whois():
-<<<<<<< HEAD
     if request.method == 'POST':
         
         f = request.files['fname1']
@@ -42,30 +41,29 @@ def whois():
 
     
         return render_template("next.html",name4=api_data)
-=======
-	file1 = request.form['fname1']
-	my_file = open("file1", "r")
 
-	data = my_file.readlines()
-	#data_into_list = data.split(" ")
- 
-	complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+request.form['name1']
- 
-	api_link = requests.get(complete_api_link)
-	api_data = api_link.text
-	
+    file1 = request.form['fname1']
+    my_file = open("file1", "r")
 
-	
-	return render_template("next.html",name3=api_data,name4=data)
->>>>>>> 65bc09f77b2d06e6d16065859b3a238284b61e25
+    data = my_file.readlines()
+    #data_into_list = data.split(" ")
+ 
+    complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+request.form['name1']
+ 
+    api_link = requests.get(complete_api_link)
+    api_data = api_link.text
+    
+
+    
+    return render_template("next.html",name3=api_data,name4=data)
+
 
 
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
+
     
     app.run(debug=True)
-=======
+
     app.run(debug=True)
->>>>>>> 65bc09f77b2d06e6d16065859b3a238284b61e25
