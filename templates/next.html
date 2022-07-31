@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info</title>
 </head>
+
 <body>
 
     <!-- <! --  the description is {{name3}}<br> --> -->
 
-    The file is  {{name4}}
-    
+    <ol>
+        <!-- For loop logic of jinja template -->
+        {%for i in range(0, len)%}
+        <h1>The Domain name is {{l[i]}}</h1>
+        <br>
+        <br>
+        {%for i in range(0, 3)%}
+        <li>{{final[i]["WhoisRecord"]}}</li>
+        <br>
+        <br>
+        {%endfor%}
+        {%endfor%}
+
+    </ol>
 </body>
+
 </html>

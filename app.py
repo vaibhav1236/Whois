@@ -14,7 +14,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['UPLOAD_FOLDER'] = "C:\\Users\\Vaibhav\\OneDrive\\Desktop\\WHOIS1\\static\\folders"
+app.config['UPLOAD_FOLDER'] = "C:\\Users\\Vaibhav\\OneDrive\\Desktop\\WHOIS1"
 app.secret_key = 'super-secret-key'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
@@ -32,38 +32,17 @@ def whois():
     f1 = open(f.filename)
     content = f1.read()
     l = content.split(" ")
+    final = []
     for i in l:
-        
-        complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+i
+        complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+i+"&outputFormat=JSON"
     
         api_link = requests.get(complete_api_link)
-        api_data = api_link.text
+        api_data = api_link.json
+        final.append(api_data)
 
+    return render_template("next.html",len = len(final),l=l,final = final)
     
-        return render_template("next.html",name4=api_data)
-
-    file1 = request.form['fname1']
-    my_file = open("file1", "r")
-
-    data = my_file.readlines()
-    #data_into_list = data.split(" ")
- 
-    complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+request.form['name1']
- 
-    api_link = requests.get(complete_api_link)
-    api_data = api_link.text
-    
-
-    
-    return render_template("next.html",name3=api_data,name4=data)
-
-
-
-
 
 if __name__ == '__main__':
-
-    
-    app.run(debug=True)
 
     app.run(debug=True)
