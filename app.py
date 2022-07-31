@@ -37,12 +37,16 @@ def whois():
         complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+i+"&outputFormat=JSON"
     
         api_link = requests.get(complete_api_link)
-        api_data = api_link.json
-        final.append(api_data)
+        api_data = api_link.json()
+        cdate =api_data['WhoisRecord']['createdDate']
+        print(cdate)
+    
+        # final.append(cd)
+        final.append(cdate)
 
     return render_template("next.html",len = len(final),l=l,final = final)
     
 
 if __name__ == '__main__':
 
-    app.run(debug=True)
+    app.run(debug=False)
