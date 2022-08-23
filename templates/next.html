@@ -10,19 +10,19 @@
 
 <body>
 
-    <!-- <! --  the description is {{name3}}<br> --> -->
+    <!-- <! --  the description is {{name3}}<br> --> 
 
     <ol>
         <!-- For loop logic of jinja template -->
         {%for i in range(0, len)%}
-        <h1>The Domain name is {{l[i]}}</h1>
+        <h2>The Domain name is {{l[i]}}</h2>
         <br>
-        <br>
-        <!-- {%for i in range(0, 3)%} -->
+    
+         <!-- {%for j in range(0, 3)%} -->
         <li>{{final[i]}}</li>
         <br>
         <br>
-        <!-- {%endfor%} -->
+         <!-- {%endfor%}  -->
         {%endfor%}
 
     </ol>

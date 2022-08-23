@@ -35,16 +35,33 @@ def whois():
     final = []
     for i in l:
         complete_api_link = "https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=at_ppZZaH1leBYYW3LC4U7eVUh8WLxYi&domainName="+i+"&outputFormat=JSON"
-    
-        api_link = requests.get(complete_api_link)
-        api_data = api_link.json()
-        cdate =api_data['WhoisRecord']['createdDate']
-        print(cdate)
-    
-        # final.append(cd)
-        final.append(cdate)
+        if complete_api_link is not None:
+            api_link = requests.get(complete_api_link)
+            api_data = api_link.json()
+            # print(api_data.WhoisRecord)
+            # cdate =api_data.get('WhoisRecord')
+            # cdate=json.dumps(cdate)
+            # cdate=json.loads(cdate)
+            api_data1 =api_data.get('WhoisRecord')
+            try:
+                cdt = api_data1['createdDate']
+                exp = api_data1['expiresDate']
+                upd = api_data1['updatedDate']
+                adm_contact = api_data1["administrativeContact"]
+                l1 = []
+                l2 = []
+                l1.append(f"CreatedDate: {cdt}")
+                l1.append(f"Expiry Date: {exp}")
+                l1.append(f"UpdatedDate: {upd}")
+                l2.append(adm_contact)
+                final.append(l1)
+                final.append(l2)
+                # final.append(cdate.get('createdDate'))
+            except:
+                continue
+                
 
-    return render_template("next.html",len = len(final),l=l,final = final)
+    return render_template("next.html",len = len(l),l=l,final = final)
     
 
 if __name__ == '__main__':
